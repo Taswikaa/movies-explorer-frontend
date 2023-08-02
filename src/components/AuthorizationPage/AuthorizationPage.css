@@ -1,0 +1,42 @@
+.authorization-page {
+  box-sizing: border-box;
+  background-color: #202020;
+  font-family: 'inter', sans-serif;
+  color: #fff;
+  padding: 56px 0 30px;
+  min-height: 100vh;
+}
+
+.authorization-page__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 51px;
+  padding-bottom: 80px;
+}
+
+.authorization-page__heading {
+  font-weight: 500;
+  font-size: 24px;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .authorization-page {
+    padding: 232px 0 50px;
+  }
+
+  .authorization-page__header {
+    padding-bottom: 40px;
+    max-width: 396px;
+    margin: 0 auto;
+    align-items: flex-start;
+    row-gap: 41px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .authorization-page {
+    padding: 70px 0;
+  }
+}

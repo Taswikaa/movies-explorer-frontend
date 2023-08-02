@@ -1,0 +1,100 @@
+.navigation {
+  background-color: #202020;
+  font-family: 'inter', sans-serif;
+  position: absolute;
+  min-width: 320px;
+  right: 0;
+  top: 0;
+  display: none;
+  z-index: 10;
+}
+
+.navigation_open {
+  display: block;
+}
+
+.navigation__container {
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 144px 0 46px;
+}
+
+.navigation__close-button {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  top: 20px;
+  right: 20px;
+}
+
+.navigation__close-button::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  background-color: #fff;
+  height: 20px;
+  transform: rotate(45deg);
+  top: 0;
+  left: 9px;
+}
+
+.navigation__close-button::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  background-color: #fff;
+  height: 20px;
+  transform: rotate(-45deg);
+  top: 0;
+  left: 9px;
+}
+
+.navigation__links {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 24px;
+  margin: 0;
+}
+
+.navigation__link {
+  margin: 0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.navigation__link_active {
+  padding-bottom: 7px;
+  border-bottom: 2px solid #fff;
+}
+
+.navigation__account-link {
+  display: block;
+  margin-top: auto;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  width: 100px;
+  text-align: center;
+  padding: 8px 0;
+  background-color: #313131;
+  border-radius: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    min-width: 520px;
+  }
+}

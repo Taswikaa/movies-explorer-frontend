@@ -1,0 +1,104 @@
+.movies-card {
+  font-family: 'inter', sans-serif;
+  background-color: #202020;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  position: relative;
+}
+
+.movies-card__poster-bg {
+  border-radius: 6px;
+}
+
+.movies-card__button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+}
+
+.movies-card__button_saved_yes {
+  background-color: #EE3465;
+  width: 21px;
+  height: 21px;
+  background-image: url('../../images/checkbox-saved.svg');
+  background-repeat: no-repeat;
+  background-size: 10px;
+  background-position: center;
+}
+
+.movies-card__button_saved_no {
+  font-size: 10px;
+  color: #fff;
+  background-color: #313131;
+  padding: 6px 7px;
+  line-height: 9px;
+  box-sizing: border-box;
+  min-width: 72px;
+}
+
+.movies-card__button_delete {
+  background-color: #313131;
+  width: 21px;
+  height: 21px;
+  background-image: url('../../images/checkbox-delete.svg');
+  background-repeat: no-repeat;
+  background-size: 7px;
+  background-position: center;
+}
+
+.movies-card__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movies-card__name {
+  font-weight: 500;
+  font-size: 12px;
+  margin: 0;
+}
+
+.movies-card__duration {
+  font-size: 11px;
+  min-width: 52px;
+  margin: 0;
+  color: #8B8B8B;
+  background-color: #2F2F2F;
+  padding: 3px 0;
+  border-radius: 3px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .movies-card {
+    row-gap: 20px;
+  }
+
+  .movies-card__poster-bg {
+    width: 339px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .movies-card {
+    row-gap: 9px;
+  }
+
+  .movies-card__poster-bg {
+    width: 360px;
+  }
+
+  .movies-card__name {
+    font-size: 13px;
+  }
+
+  .movies-card__info {
+    min-width: 335px;
+    margin: 0 auto;
+  }
+}

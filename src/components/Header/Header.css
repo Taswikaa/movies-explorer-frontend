@@ -1,0 +1,148 @@
+.header {
+  background-color: #202020;
+  font-family: 'inter', sans-serif;
+  padding: 18px 14px;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__menu {
+  display: flex;
+  column-gap: 14px;
+}
+
+.header__button {
+  margin: 0;
+  padding: 5px 10px;
+  font-weight: 500;
+  font-size: 10px;
+  border: 1px solid #3DDC84;
+  outline: none;
+  border-radius: 3px;
+  background-color: #3DDC84;
+}
+
+.header__button_bg_transparent {
+  color: #fff;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
+.header__button_burger {
+  width: 22px;
+  height: 20.5px;
+  border: none;
+  outline: none;
+  border-top: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+  background-color: transparent;
+  position: relative;
+  margin-right: 9px;
+  margin-top: 2px;
+}
+
+.header__button_burger::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 2.5px;
+  top: 7px;
+  right: 0;
+  background-color: #fff;
+} 
+
+.header__button_account {
+  display: none;
+}
+
+.header__links {
+  display: none;
+}
+
+@media screen and (min-width: 425px) {
+  .header__button {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 18px 30px;
+  }
+
+  .header__menu {
+    column-gap: 30px;
+  }
+
+  .header__button {
+    padding: 8px 19px;
+  }
+
+  .header__button_bg_transparent {
+    padding: 0;
+  }
+
+  .header__button_burger {
+    width: 28px;
+    height: 23px;
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+  }
+  
+  .header__button_burger::after {
+    width: 28px;
+    height: 3px;
+    top: 7px;
+  } 
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    padding: 18px 70px;
+  }
+
+  .header__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .header__button_burger {
+    display: none;
+  }
+
+  .header__button_account {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background-color: #313131;
+    color: #fff;
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 100px;
+  }
+
+  .header__links {
+    display: flex;
+    column-gap: 17px;
+    margin-left: 62px;
+  }
+
+  .header__link {
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .header__link_fw_bold {
+    font-weight: 500;
+  }
+}
