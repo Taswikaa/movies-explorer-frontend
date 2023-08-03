@@ -13,11 +13,14 @@ const SearchForm = () => {
         <button className='search-form__button'></button>
       </div>
       <div className='search-form__checkbox-field'>
-        <input
-          type='checkbox'
-          className='search-form__input-checkbox'
-        />
-        <p className='search-form__input-span'>Короткометражки</p>
+        <label className='search-form__wrap'>
+          <input
+            type='checkbox'
+            className='search-form__input-checkbox'
+          />
+          <span className='checkbox__mark'></span>
+          <p className='search-form__input-span'>Короткометражки</p>
+        </label>
       </div>
     </form>
   );

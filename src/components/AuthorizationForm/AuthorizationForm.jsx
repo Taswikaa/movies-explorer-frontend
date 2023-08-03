@@ -15,6 +15,7 @@ const AuthorizationForm = ({ isLoginPage, buttonText, questionText, linkText }) 
                 type='text'
                 placeholder='Введите имя'
                 value='Виталий'
+                required
               />
               <p className='authorization-form__input-error'></p>
             </div>
@@ -26,6 +27,7 @@ const AuthorizationForm = ({ isLoginPage, buttonText, questionText, linkText }) 
               type='text'
               placeholder='Введите адрес'
               value='pochta@yandex.ru'
+              required
             />
             <p className='authorization-form__input-error'></p>
           </div>
@@ -36,6 +38,7 @@ const AuthorizationForm = ({ isLoginPage, buttonText, questionText, linkText }) 
               type='password'
               placeholder='Введите пароль'
               value='Виталий'
+              required
             />
             <p className='authorization-form__input-error'>Что-то пошло не так...</p>
           </div>

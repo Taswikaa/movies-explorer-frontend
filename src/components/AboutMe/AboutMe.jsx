@@ -19,20 +19,20 @@ const AboutMe = () => {
         </div>
         <div className='portfolio'>
           <h3 className='portfolio__heading'>Портфолио</h3>
-          <ul className='portfolio__list'>
-            <li className='portfolio__item'>
-              <a className='portfolio__link' href='https://github.com/Taswikaa/how-to-learn' target='_blank' rel='noreferrer'>Статичный сайт</a>
+          <div className='portfolio__list'>
+            <a className='portfolio__item' href='https://github.com/Taswikaa/how-to-learn' target='_blank' rel='noreferrer'>
+              <p className='portfolio__link-text'>Статичный сайт</p>
               <img className='portfolio__link-img' src={linkImage} alt="" />
-            </li>
-            <li className='portfolio__item'>
-              <a className='portfolio__link' href='https://github.com/Taswikaa/russian-travel' target='_blank' rel='noreferrer'>Адаптивный сайт</a>
+            </a>
+            <a className='portfolio__item' href='https://github.com/Taswikaa/russian-travel' target='_blank' rel='noreferrer'>
+              <p className='portfolio__link-text'>Адаптивный сайт</p>
               <img className='portfolio__link-img' src={linkImage} alt="" />
-            </li>
-            <li className='portfolio__item portfolio__item_last'>
-              <a className='portfolio__link' href='https://github.com/Taswikaa/react-mesto-auth' target='_blank' rel='noreferrer'>Одностраничное приложение</a>
+            </a>
+            <a className='portfolio__item portfolio__item_last' href='https://github.com/Taswikaa/react-mesto-auth' target='_blank' rel='noreferrer'>
+              <p className='portfolio__link-text'>Одностраничное приложение</p>
               <img className='portfolio__link-img' src={linkImage} alt="" />
-            </li>
-          </ul>
+            </a>
+          </div>
         </div>
       </div>
     </div>

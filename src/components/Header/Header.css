@@ -111,6 +111,10 @@
     margin: 0 auto;
   }
 
+  .header__button:hover{
+    cursor: pointer;
+  }
+
   .header__button_burger {
     display: none;
   }
