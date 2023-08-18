@@ -1,25 +1,34 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 
-const MoviesCard = ({ name, imageSrc, duration, isSaved }) => {
+const MoviesCard = ({ name, imageSrc, duration, isSaved, isHide, movieData, saveMovie, deleteMovie, movieId }) => {
   const location = useLocation();
 
   const isMainPage = location.pathname === '/movies';
 
   return (
-    <div className='movies-card'>
+    <div className={`movies-card ${!isHide ? "" : 'movies-card_display_none'}`}>
       <div className='movies-card__poster'>
-        <img className='movies-card__poster-bg' src={imageSrc} alt={`Постер фильма ${name}`} />
+        <a href={movieData.trailerLink} target='_blank' rel='noreferrer'>
+          <img className='movies-card__poster-bg' src={imageSrc} alt={`Постер фильма ${name}`} />
+        </a>
         {
-          isMainPage ? isSaved ? (
+          isMainPage ? movieData.isSaved ? (
             <div className='movies-card__button movies-card__button_saved_yes'></div>
           ) :
           (
-            <button className='movies-card__button movies-card__button_saved_no'>Сохранить</button>
+            <button className='movies-card__button movies-card__button_saved_no' onClick={() => {
+              saveMovie(movieData)
+            }}>Сохранить</button>
           ) :
           (
-            <button className='movies-card__button movies-card__button_delete'></button>
+            <button
+              className='movies-card__button movies-card__button_delete'
+              onClick={() => {
+                deleteMovie(movieId);
+              }}
+            ></button>
           )
         }
       </div>

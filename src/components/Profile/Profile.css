@@ -36,6 +36,7 @@
   padding-bottom: 17px;
   border-bottom: 1px solid #424242;
   margin-bottom: 17px;
+  position: relative;
 }
 
 .profile__item_border_none {
@@ -50,7 +51,34 @@
 }
 
 .profile__value {
+  background-color: transparent;
+  border: none;
+  text-align: right;
+  padding-right: 10px;
+  color: #fff;
+}
+
+.profile__value-error {
   margin: 0;
+  position: absolute;
+  color: #EE3465;
+  font-size: 8px;
+  right: 10px;
+  bottom: 5px;
+}
+
+.profile__value-error_pos_bottom {
+  bottom: -12px;
+}
+
+.profile__value:focus {
+  outline: 1px solid #707070;
+  border-radius: 5px;
+}
+
+.profile__value::placeholder {
+  opacity: .6;
+  color: #fff;
 }
 
 .profile__interaction {
@@ -69,6 +97,10 @@
   color: #fff;
   font-size: 12px;
   padding: 0;
+}
+
+.profile__button_inactive {
+  opacity: .3;
 }
 
 .profile__button_color_red {
@@ -95,6 +127,14 @@
 
   .profile__button {
     font-size: 13px;
+  }
+
+  .profile__button:hover {
+    cursor: pointer;
+  }
+
+  .profile__button_inactive:hover {
+    cursor: default;
   }
 }
 

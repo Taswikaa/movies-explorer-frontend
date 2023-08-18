@@ -8,8 +8,13 @@
   position: relative;
 }
 
+.movies-card_display_none {
+  display: none;
+}
+
 .movies-card__poster-bg {
   border-radius: 6px;
+  width: 300px;
 }
 
 .movies-card__button {

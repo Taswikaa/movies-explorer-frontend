@@ -1,10 +1,10 @@
 import { React, useState } from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
-import './Header.css'
-import logo from '../../images/logo.svg'
+import './Header.css';
+import logo from '../../images/logo.svg';
 
-const Header = () => {
+const Header = ({ isLogin }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -24,10 +24,19 @@ const Header = () => {
         <div className="header__container">
           <img src={logo} alt='' onClick={() => navigate('/')}></img>
           {location.pathname === '/' ? (
-            <nav className='header__menu'>
+            !isLogin ? (
+              <nav className='header__menu'>
               <button className='header__button header__button_bg_transparent' onClick={() => navigate('/signup')}>Регистрация</button>
               <button className='header__button' onClick={() => navigate('/signin')}>Войти</button>
             </nav>
+            ) :
+            (
+              <nav className='header__menu'>
+                <Link className='header__link' to='/movies'>Фильмы</Link>
+                <Link className='header__link' to='/saved-movies'>Сохранённые фильмы</Link>
+                <Link className='header__link' to='/profile'>Аккаунт</Link>
+              </nav>
+            )
           ) :
           (
             <>

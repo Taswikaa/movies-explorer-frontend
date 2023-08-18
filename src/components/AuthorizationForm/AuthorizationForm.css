@@ -69,6 +69,11 @@
   border-radius: 3px;
 }
 
+.authorization-form__submit-button_disabled {
+  background-color: #313131;
+  color: #a1a1a1;
+}
+
 .authorization-form__interaction-transition {
   display: flex;
   font-size: 12px;
