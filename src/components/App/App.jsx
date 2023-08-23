@@ -36,6 +36,9 @@ function App() {
     logout()
     .then(() => {
       localStorage.removeItem('auth');
+      localStorage.removeItem('movieName');
+      localStorage.removeItem('movies');
+      localStorage.removeItem('isMoviesShort');
       setIsLogin(false);
       setCurrentUser({});
       navigate('/', { replace: true });
