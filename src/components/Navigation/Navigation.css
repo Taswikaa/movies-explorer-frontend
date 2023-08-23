@@ -97,4 +97,8 @@
   .navigation {
     min-width: 520px;
   }
+
+  .navigation__close-button:hover {
+    cursor: pointer;
+  }
 }

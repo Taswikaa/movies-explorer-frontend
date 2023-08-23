@@ -116,7 +116,11 @@
     width: 28px;
     height: 3px;
     top: 7px;
-  } 
+  }
+
+  .header__button_burger:hover {
+    cursor: pointer;
+  }
 }
 
 @media screen and (min-width: 1280px) {
