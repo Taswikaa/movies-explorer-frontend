@@ -10,6 +10,14 @@ const Profile = ({ signOut, updateUserInfo }) => {
     name: '',
     email: ''
   });
+
+  useEffect(() => {
+    setUserInfoChange({
+      ...userInfoChange,
+      name: userInfo.name,
+      email: userInfo.email
+    })
+  }, [userInfo])
   
   const [emailError, setEmailError] = useState('');
   const [nameError, setNameError] = useState('');
@@ -55,7 +63,11 @@ const Profile = ({ signOut, updateUserInfo }) => {
     if (emailError || nameError || (!userInfoChange.name && !userInfoChange.email)) {
       setIsFormValid(false);
     } else {
-      setIsFormValid(true);
+      if (userInfoChange.name === userInfo.name && userInfoChange.email === userInfo.email) {
+        setIsFormValid(false);
+      } else {
+        setIsFormValid(true);
+      }
     }
   }, [nameError, emailError, userInfoChange]);
 

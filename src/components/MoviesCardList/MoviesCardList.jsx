@@ -21,7 +21,7 @@ const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteM
         return movie.movieId === el.id;
       })
     });
-  }, [savedMovies, allSituableMovies, saveMovie]);
+  }, [savedMovies]);
 
   useEffect(() => {
     const windowResize = function() {
@@ -41,14 +41,13 @@ const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteM
 
   useEffect(() => {
     if (!isAllMoviesShown) {
-      if (windowWidth < 768) setHowManyToShow(2);
-      if (windowWidth >= 768 && windowWidth < 1240) setHowManyToShow(2 * 4);
-      if (windowWidth >= 1240) setHowManyToShow(3 * 4);
+      if (windowWidth < 1240) setHowManyToShow(2);
+      if (windowWidth >= 1240) setHowManyToShow(3);
     }
   }, [windowWidth, isAllMoviesShown, moviesToShow, howManyToShow]);
 
   const showMoreMovies = function() {
-    setMoviesToShow(moviesToShow + 2);
+    setMoviesToShow(moviesToShow + howManyToShow);
   }
 
   useEffect(() => {
@@ -63,6 +62,12 @@ const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteM
     if (!isPathMovies) {
       if (!settingObject.movieName) {
         setAllSituableMovies([]);
+
+        if (localStorage.getItem('movies') && localStorage.getItem('movieName')) {
+          setAllSituableMovies(JSON.parse(localStorage.getItem('movies')))
+        } else {
+          localStorage.removeItem('movies');
+        }
 
         return;
       }
@@ -79,11 +84,15 @@ const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteM
         });
   
         setAllSituableMovies(shortSituableMovies);
-  
+
+        localStorage.setItem('movies', JSON.stringify(shortSituableMovies));
+        
         return;
       }
 
       setAllSituableMovies(situableMovies);
+
+      localStorage.setItem('movies', JSON.stringify(situableMovies));
     }
   }, [settingObject]);
 
@@ -104,6 +113,8 @@ const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteM
                     isHide={i < moviesToShow ? false : true}
                     movieData={el}
                     saveMovie={saveMovie}
+                    deleteMovie={deleteMovie}
+                    savedMovies={savedMovies}
                   />)
                 ))
               }
@@ -113,9 +124,21 @@ const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteM
             <Preloader />
         ) :
         (
+          movies.length > 0 ? 
           <div className='movies-card-list__inner-container'>
             {
-              movies.map(el => (
+              !settingObject.isShort ? movies.map(el => (
+                (<MoviesCard
+                  name={el.nameRU}
+                  imageSrc={el.image}
+                  duration={translateTime(el.duration)}
+                  key={el._id}
+                  movieId={el._id}
+                  deleteMovie={deleteMovie}
+                  movieData={el}
+                />)
+              )) : 
+              movies.filter(el => el.duration <= 40).map(el => (
                 (<MoviesCard
                   name={el.nameRU}
                   imageSrc={el.image}
@@ -127,7 +150,8 @@ const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteM
                 />)
               ))
             }
-          </div>
+          </div> :
+          <p className='movies-card-list__not-found'>Ничего не найдено</p>
         )
       }
       <button

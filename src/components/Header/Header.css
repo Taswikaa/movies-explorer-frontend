@@ -81,6 +81,18 @@
     padding: 18px 30px;
   }
 
+  .header__logo:hover {
+    cursor: pointer;
+  }
+
+  .header__link {
+    transition: opacity .3s;
+  }
+
+  .header__link:hover {
+    opacity: .7;
+  }
+
   .header__menu {
     column-gap: 30px;
   }

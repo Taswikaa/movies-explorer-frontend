@@ -70,8 +70,15 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <Routes>
-          <Route path='/signin' element={<Login loginUser={loginUser} />} />
-          <Route path='/signup' element={<Register loginUser={loginUser} />} />
+          <Route
+            path='/signin'
+            element={<Login loginUser={ loginUser }
+            />}
+          />
+          <Route 
+            path='/signup'
+            element={<Register loginUser={loginUser} />}
+          />
           <Route path='/' element={<Main isLogin={isLogin} />} />
           <Route
             path='/profile'

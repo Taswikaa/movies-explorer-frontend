@@ -22,7 +22,7 @@ const Header = ({ isLogin }) => {
     <>
       <header className='header'>
         <div className="header__container">
-          <img src={logo} alt='' onClick={() => navigate('/')}></img>
+          <img className='header__logo' src={logo} alt='' onClick={() => navigate('/')}></img>
           {location.pathname === '/' ? (
             !isLogin ? (
               <nav className='header__menu'>

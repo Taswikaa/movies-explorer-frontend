@@ -58,7 +58,6 @@ class MainApi {
       credentials: 'include',
     })
     .then(res => {
-      console.log(res);
       return this._checkStatus(res);
     })
   }

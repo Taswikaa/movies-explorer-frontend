@@ -16,6 +16,18 @@ const Movies = () => {
   });
 
   useEffect(() => {
+    if (allMovies.length === 0) {
+      api.getMovies()
+        .then(res => {
+        setAllMovies(res);
+      })
+      .catch(err => {
+        console.log('Не удалось получить фильмы из базы данных, ошибка:', err);
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     mainApi.getSavedMovies()
     .then(res => {
       setSavedMovies(res);
@@ -23,7 +35,7 @@ const Movies = () => {
     .catch(err => {
       console.log('Ошибка получения сохранённых фильмов', err);
     })
-  }, []);
+  }, [savedMovies]);
 
   const saveMovie = function(data) {
     const movieData = {};
@@ -41,7 +53,18 @@ const Movies = () => {
     .then(res => {
       setSavedMovies([...savedMovies, res]);
     })
-    .catch(err => console.log(err, 'ошибка сохранения'))
+    .catch(err => console.log(err, 'ошибка сохранения'));
+  }
+
+  const deleteMovie = function(id) {
+    mainApi.deleteSavedMovie(id)
+    .then(res => {
+      const newSavedMovies = savedMovies.filter(el => {
+        return el.movieId !== res.movieId;
+      })
+      setSavedMovies(newSavedMovies);
+    })
+    .catch(err => console.log(err))
   }
 
   const handleSearchMovies = function(name, isShort) {
@@ -50,6 +73,7 @@ const Movies = () => {
         ...settingObject,
         movieName: ''
       })
+      
       return;
     }
 
@@ -63,25 +87,26 @@ const Movies = () => {
     })
   }
 
-  useEffect(() => {
-    api.getMovies()
-    .then(res => {
-      setAllMovies(res);
+  const switchShorts = function(isShort) {
+    setSettingObject({
+      ...settingObject,
+      isShort
     })
-    .catch(err => {
-      console.log('Не удалось получить фильмы из базы данных, ошибка:', err);
-    });
-  }, []);
+  }
 
   return (
     <div className='movies'>
       <Header />
-      <SearchForm handleSearchMovies={handleSearchMovies} />
+      <SearchForm
+        handleSearchMovies={handleSearchMovies}
+        switchShorts={switchShorts}
+      />
       <MoviesCardList
         movies={allMovies}
         settingObject={settingObject}
         saveMovie={saveMovie}
         savedMovies={savedMovies}
+        deleteMovie={deleteMovie}
       />
       <Footer />
     </div>

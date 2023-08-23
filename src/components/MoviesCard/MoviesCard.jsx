@@ -2,7 +2,7 @@ import { React, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 
-const MoviesCard = ({ name, imageSrc, duration, isSaved, isHide, movieData, saveMovie, deleteMovie, movieId }) => {
+const MoviesCard = ({ name, imageSrc, duration, savedMovies, isHide, movieData, saveMovie, deleteMovie, movieId }) => {
   const location = useLocation();
 
   const isMainPage = location.pathname === '/movies';
@@ -15,7 +15,16 @@ const MoviesCard = ({ name, imageSrc, duration, isSaved, isHide, movieData, save
         </a>
         {
           isMainPage ? movieData.isSaved ? (
-            <div className='movies-card__button movies-card__button_saved_yes'></div>
+            <div
+              className='movies-card__button movies-card__button_saved_yes'
+              onClick={() => {
+                savedMovies.forEach(el => {
+                  if (el.nameRU === movieData.nameRU) {
+                    deleteMovie(el._id);
+                  }
+                })
+              }}>
+            </div>
           ) :
           (
             <button className='movies-card__button movies-card__button_saved_no' onClick={() => {

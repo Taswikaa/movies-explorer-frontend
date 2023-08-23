@@ -18,7 +18,10 @@ const SavedMovies = () => {
   const deleteMovie = function(id) {
     mainApi.deleteSavedMovie(id)
     .then(res => {
-      console.log(res);
+      const newSavedMovies = savedMovies.filter(el => {
+        return el.movieId !== res.movieId;
+      })
+      setSavedMovies(newSavedMovies);
     })
     .catch(err => console.log(err))
   }
@@ -68,6 +71,13 @@ const SavedMovies = () => {
       setSavedSituableMovies(situableMovies);
   }, [settingObject])
 
+  const switchShorts = function(isShort) {
+    setSettingObject({
+      ...settingObject,
+      isShort
+    })
+  }
+
   useEffect(() => {
     mainApi.getSavedMovies()
     .then(res => {
@@ -81,10 +91,11 @@ const SavedMovies = () => {
   return (
     <div className='saved-movies'>
       <Header />
-      <SearchForm handleSearchMovies={handleSearchMovies} />
+      <SearchForm handleSearchMovies={handleSearchMovies} switchShorts={switchShorts} />
       <MoviesCardList
         movies={settingObject.movieName ? savedSituableMovies : savedMovies}
         deleteMovie={deleteMovie}
+        settingObject={settingObject}
       />
       <Footer />
     </div>
