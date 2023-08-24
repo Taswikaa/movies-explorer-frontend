@@ -35,7 +35,7 @@ const Movies = () => {
     .catch(err => {
       console.log('Ошибка получения сохранённых фильмов', err);
     })
-  }, [savedMovies]);
+  }, []);
 
   const saveMovie = function(data) {
     const movieData = {};
@@ -51,7 +51,7 @@ const Movies = () => {
 
     mainApi.saveMovie(movieData)
     .then(res => {
-      setSavedMovies([...savedMovies, res]);
+      setSavedMovies(state => [...state, res]);
     })
     .catch(err => console.log(err, 'ошибка сохранения'));
   }

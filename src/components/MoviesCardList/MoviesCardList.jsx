@@ -15,6 +15,15 @@ const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteM
   const [moviesToShow, setMoviesToShow] = useState(0);
   const [howManyToShow, setHowManyToShow] = useState(0);
 
+  // useEffect(() => {
+  //   if (localStorage.getItem('movies')) {
+  //     const movies = JSON.parse(localStorage.getItem('movies'));
+  //     setAllSituableMovies(state => movies.map((el, i) => {
+  //       state[i] = el;
+  //     }));
+  //   }
+  // }, [])
+
   useEffect(() => {
     allSituableMovies.forEach(el => {
       el.isSaved = savedMovies.some(movie => {

@@ -1,5 +1,5 @@
-const BASE_URL = 'https://api.yuwarika.nomoreparties.sbs';
-// const BASE_URL = 'http://localhost:4000';
+// const BASE_URL = 'https://api.yuwarika.nomoreparties.sbs';
+const BASE_URL = 'http://localhost:4000';
 
 const getResponseData = function(res) {
   if (res.ok) {
