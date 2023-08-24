@@ -9,15 +9,9 @@ const MoviesCard = ({ name, imageSrc, duration, savedMovies, isHide, movieData, 
 
   const [isSaved, setIsSaved] = useState(false);
 
-  useEffect(() => {
-    if (location.pathname === '/movies') {
-      savedMovies.forEach(el => {
-        if (el.movieId === movieData.id) {
-          setIsSaved(true);
-        }
-      })
-    }
-  }, [savedMovies])
+  const handleSaveMovie = function() {
+    setIsSaved(true);
+  }
 
   const handleDeleteMovie = function() {
     setIsSaved(false);
@@ -46,6 +40,7 @@ const MoviesCard = ({ name, imageSrc, duration, savedMovies, isHide, movieData, 
           (
             <button className='movies-card__button movies-card__button_saved_no' onClick={() => {
               saveMovie(movieData);
+              handleSaveMovie(true);
             }}>Сохранить</button>
           ) :
           (
