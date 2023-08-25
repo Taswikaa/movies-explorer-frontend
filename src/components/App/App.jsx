@@ -17,6 +17,7 @@ function App() {
   const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(false);
+  const [isUserInfoChange, setIsUserInfoChange] = useState(false);
   const [currentUser, setCurrentUser] = useState({
     name: '',
     email: ''
@@ -53,6 +54,10 @@ function App() {
           name :res.name,
           email: res.email
         })
+        setIsUserInfoChange(true);
+        setTimeout(() => {
+          setIsUserInfoChange(false);
+        }, 1000)
       })
       .catch(err => console.log(err))
   }
@@ -90,6 +95,7 @@ function App() {
               signOut={ signOut } 
               isLogin={ isLogin }
               updateUserInfo={ updateUserInfo }
+              isUserInfoChange={ isUserInfoChange }
             />}
           />
           <Route

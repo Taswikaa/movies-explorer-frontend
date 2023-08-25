@@ -90,6 +90,16 @@
   align-items: center;
 }
 
+.profile__interaction-success {
+  margin: 0 0 15px 0;
+  font-size: 12px;
+  color: #83f1a6;
+}
+
+.profile__interaction-success_hidden {
+  display: none;
+}
+
 .profile__button {
   border: none;
   outline: none;

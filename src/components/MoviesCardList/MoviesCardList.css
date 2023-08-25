@@ -55,6 +55,12 @@
 
   .movies-card-list__load-button {
     min-width: 320px;
+    transition: border .3s;
+  }
+
+  .movies-card-list__load-button:hover {
+    cursor: pointer;
+    border: 1px solid #7f7e7e;
   }
 
   .movies-card-list__not-found {

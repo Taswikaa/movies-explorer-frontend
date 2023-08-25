@@ -3,7 +3,7 @@ import './Profile.css';
 import Header from '../Header/Header';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-const Profile = ({ signOut, updateUserInfo }) => {
+const Profile = ({ signOut, updateUserInfo, isUserInfoChange }) => {
   const userInfo = useContext(CurrentUserContext);
 
   const [userInfoChange, setUserInfoChange] = useState({
@@ -112,6 +112,7 @@ const Profile = ({ signOut, updateUserInfo }) => {
           </ul>
         </div>
         <div className='profile__interaction'>
+          <p className={`profile__interaction-success ${(!isUserInfoChange) ? 'profile__interaction-success_hidden' : ''}`}>Данные успешно обновлены</p>
           <button
             className={`profile__button ${isFormValid ? '' : 'profile__button profile__button_inactive'}`}
             type='button'

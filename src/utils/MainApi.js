@@ -63,6 +63,6 @@ class MainApi {
   }
 };
 
-const mainApi = new MainApi({ url: 'https://api.yuwarika.nomoreparties.sbs' });
+const mainApi = new MainApi({ url: 'http://localhost:4000' });
 
 export default mainApi;
