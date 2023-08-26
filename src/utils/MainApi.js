@@ -22,7 +22,7 @@ class MainApi {
   }
 
   updateUser(name, email) {
-    return fetch(`${this._url}/us1ers/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

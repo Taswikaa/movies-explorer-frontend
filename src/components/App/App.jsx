@@ -71,6 +71,10 @@ function App() {
     })
     .catch(err => {
       console.log('Вы не авторизованы', err);
+      localStorage.removeItem('auth');
+      localStorage.removeItem('movieName');
+      localStorage.removeItem('movies');
+      localStorage.removeItem('isMoviesShort');
     })
   }, []);
 
