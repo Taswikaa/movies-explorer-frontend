@@ -69,7 +69,7 @@ const SavedMovies = () => {
       }
 
       setSavedSituableMovies(situableMovies);
-  }, [settingObject])
+  }, [settingObject, savedMovies])
 
   const switchShorts = function(isShort) {
     setSettingObject({

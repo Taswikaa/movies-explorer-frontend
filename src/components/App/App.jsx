@@ -57,7 +57,7 @@ function App() {
         setIsUserInfoChange(true);
         setTimeout(() => {
           setIsUserInfoChange(false);
-        }, 1000)
+        }, 3000)
       })
       .catch(err => console.log(err))
   }

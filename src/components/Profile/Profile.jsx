@@ -10,6 +10,7 @@ const Profile = ({ signOut, updateUserInfo, isUserInfoChange }) => {
     name: '',
     email: ''
   });
+  const [hasDataChangeRecently, setHasDataChangeRecently] = useState(false);
 
   useEffect(() => {
     setUserInfoChange({
@@ -57,6 +58,7 @@ const Profile = ({ signOut, updateUserInfo, isUserInfoChange }) => {
     if (!email) email = userInfo.email;
 
     updateUserInfo(name, email);
+    setHasDataChangeRecently(true);
   }
 
   useEffect(() => {
@@ -112,7 +114,7 @@ const Profile = ({ signOut, updateUserInfo, isUserInfoChange }) => {
           </ul>
         </div>
         <div className='profile__interaction'>
-          <p className={`profile__interaction-success ${(!isUserInfoChange) ? 'profile__interaction-success_hidden' : ''}`}>Данные успешно обновлены</p>
+          <p className={`profile__interaction-success ${(!isUserInfoChange || !hasDataChangeRecently) ? 'profile__interaction-success_hidden' : ''}`}>Данные успешно обновлены</p>
           <button
             className={`profile__button ${isFormValid ? '' : 'profile__button profile__button_inactive'}`}
             type='button'

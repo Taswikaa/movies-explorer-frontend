@@ -4,122 +4,67 @@ import './MoviesCardList.css';
 import { translateTime } from '../../utils/utils';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
+import * as sizes from '../../utils/constants';
+import useMediaQuery from '../../hooks/useMediaQuery';
 
-const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteMovie }) => {
+const MoviesCardList = ({ movies, allMovies, settingObject, saveMovie, savedMovies, deleteMovie, savedMoviesIds }) => {
   const location = useLocation();
   const isPathMovies = location.pathname !== '/movies';
 
+  const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const isTablet = useMediaQuery("(min-width: 768px)");
+
+  const initialMovies = isDesktop
+    ? sizes.DESKTOP_INITIAL_MOVIES
+    : isTablet
+    ? sizes.TABLET_INITIAL_MOVIES
+    : sizes.MOBILE_INITIAL_MOVIES;
+
+  const [visibleMovies, setVisibleMovies] = useState(initialMovies);
   const [isAllMoviesShown, setIsAllMoviesShown] = useState(false);
-  const [allSituableMovies, setAllSituableMovies] = useState([]);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [moviesToShow, setMoviesToShow] = useState(0);
-  const [howManyToShow, setHowManyToShow] = useState(0);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem('movies')) {
-  //     const movies = JSON.parse(localStorage.getItem('movies'));
-  //     setAllSituableMovies(state => movies.map((el, i) => {
-  //       state[i] = el;
-  //     }));
-  //   }
-  // }, [])
-
-  useEffect(() => {
-    allSituableMovies.forEach(el => {
-      el.isSaved = savedMovies.some(movie => {
-        return movie.movieId === el.id;
-      })
-    });
-  }, [savedMovies]);
-
-  useEffect(() => {
-    const windowResize = function() {
-      setWindowWidth(window.innerWidth);
+  const calculateMovies = function() {
+    if (isDesktop) {
+      return setVisibleMovies(visibleMovies  + sizes.DESKTOP_MOVIES_LOAD);
     }
 
-    if (windowWidth < 768) setMoviesToShow(5);
-    if (windowWidth >= 768 && windowWidth < 1240) setMoviesToShow(8);
-    if (windowWidth >= 1240) setMoviesToShow(12);
-
-    window.addEventListener('resize', windowResize);
-
-    return () => {
-      window.removeEventListener('resize', windowResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isAllMoviesShown) {
-      if (windowWidth < 1240) setHowManyToShow(2);
-      if (windowWidth >= 1240) setHowManyToShow(3);
+    if (isTablet) {
+      return setVisibleMovies(visibleMovies  + sizes.TABLET_MOVIES_LOAD);
     }
-  }, [windowWidth, isAllMoviesShown, moviesToShow, howManyToShow]);
 
-  const showMoreMovies = function() {
-    setMoviesToShow(moviesToShow + howManyToShow);
+    setVisibleMovies(visibleMovies  + sizes.TABLET_MOVIES_LOAD);
+  }
+
+  const hanleLoadMore = function() {
+    calculateMovies();
   }
 
   useEffect(() => {
-    if (allSituableMovies.length <= moviesToShow) {
-      setIsAllMoviesShown(true);
-    } else {
-      setIsAllMoviesShown(false);
-    }
-  }, [allSituableMovies, moviesToShow]);
-
-  useEffect(() => {
     if (!isPathMovies) {
-      if (!settingObject.movieName) {
-        setAllSituableMovies([]);
-
-        if (localStorage.getItem('movies') && localStorage.getItem('movieName')) {
-          setAllSituableMovies(JSON.parse(localStorage.getItem('movies')))
-        } else {
-          localStorage.removeItem('movies');
-        }
-
-        return;
+      if (allMovies.length <= visibleMovies) {
+        setIsAllMoviesShown(true);
+      } else {
+        setIsAllMoviesShown(false);
       }
-  
-      const ruRegExp = /[а-яё]/i;
-        
-      const situableMovies = movies.filter(el => {
-        return settingObject.movieName.match(ruRegExp) ? el.nameRU.startsWith(settingObject.movieName) : el.nameEN.startsWith(settingObject.movieName);
-      });
-  
-      if (settingObject.isShort) {
-        const shortSituableMovies = situableMovies.filter(el => {
-          return el.duration <= 40;
-        });
-  
-        setAllSituableMovies(shortSituableMovies);
-
-        localStorage.setItem('movies', JSON.stringify(shortSituableMovies));
-        
-        return;
-      }
-
-      setAllSituableMovies(situableMovies);
-
-      localStorage.setItem('movies', JSON.stringify(situableMovies));
     }
-  }, [settingObject]);
+  }, [allMovies, visibleMovies])
 
   return (
     <div className='movies-card-list'>
       {
         !isPathMovies ? (
-          allSituableMovies.length > 0 ? 
+          allMovies.length > 0 ? 
             <div className='movies-card-list__inner-container'>
               {
-                allSituableMovies.map((el, i) => (
+                allMovies.slice(0, visibleMovies).map((el, i) => (
                   (<MoviesCard
                     name={el.nameRU}
                     imageSrc={`https://api.nomoreparties.co/${el.image.url}`}
                     duration={translateTime(el.duration)}
-                    isSaved={el.isSaved}
+                    isSaved={savedMoviesIds.some(id => {
+                      return id === el.id;
+                    })}
                     key={el.id}
-                    isHide={i < moviesToShow ? false : true}
                     movieData={el}
                     saveMovie={saveMovie}
                     deleteMovie={deleteMovie}
@@ -166,7 +111,7 @@ const MoviesCardList = ({ movies, settingObject, saveMovie, savedMovies, deleteM
       <button
         className={`movies-card-list__load-button ${(isPathMovies || isAllMoviesShown) ? 'movies-card-list__load-button_disabled' : ''}`}
         disabled={isPathMovies || isAllMoviesShown}
-        onClick={showMoreMovies}
+        onClick={hanleLoadMore}
       >Ещё</button>
     </div>
   );
