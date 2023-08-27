@@ -109,7 +109,11 @@ const Movies = () => {
     const ruRegExp = /[а-яё]/i;
 
     const catchedMovies = allMovies.filter(el => {
-      return settingObject.movieName.match(ruRegExp) ? el.nameRU.startsWith(settingObject.movieName) : el.nameEN.startsWith(settingObject.movieName);
+      return settingObject.movieName.match(ruRegExp) ?
+        // el.nameRU.startsWith(settingObject.movieName) :
+        // el.nameEN.startsWith(settingObject.movieName);
+        el.nameRU.includes(settingObject.movieName) :
+        el.nameEN.includes(settingObject.movieName)
     });
 
     if (settingObject.isShort) {

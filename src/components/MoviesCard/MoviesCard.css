@@ -6,6 +6,7 @@
   flex-direction: column;
   row-gap: 12px;
   position: relative;
+  max-width: 300px;
 }
 
 .movies-card_display_none {
@@ -83,6 +84,7 @@
 @media screen and (min-width: 768px) {
   .movies-card {
     row-gap: 20px;
+    max-width: 339px;
   }
 
   .movies-card__poster-bg {
@@ -107,6 +109,7 @@
 @media screen and (min-width: 1280px) {
   .movies-card {
     row-gap: 9px;
+    max-width: 360px;
   }
 
   .movies-card__poster-bg {

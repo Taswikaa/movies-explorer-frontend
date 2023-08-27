@@ -21,8 +21,8 @@ const Login = ({ loginUser }) => {
         .then(data => {
           const { name, email } = data;
           loginUser(name, email);
+          navigate('/movies', {replace: true});
         })
-        navigate('/movies', {replace: true});
       }
     })
     .catch(err => {
