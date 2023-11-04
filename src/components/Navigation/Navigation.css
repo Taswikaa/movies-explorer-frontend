@@ -6,7 +6,7 @@
   right: 0;
   top: 0;
   display: none;
-  z-index: 10;
+  z-index: 20;
 }
 
 .navigation_open {
@@ -96,5 +96,9 @@
 @media screen and (min-width: 768px) {
   .navigation {
     min-width: 520px;
+  }
+
+  .navigation__close-button:hover {
+    cursor: pointer;
   }
 }

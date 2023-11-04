@@ -6,15 +6,15 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Footer from '../Footer/Footer';
 
-const Main = () => {
+const Main = ({ isLogin }) => {
   return (
     <>
-      <Header></Header>
-      <Promo></Promo>
-      <AboutProject></AboutProject>
-      <Techs></Techs>
-      <AboutMe></AboutMe>
-      <Footer></Footer>
+      <Header isLogin={isLogin} />
+      <Promo />
+      <AboutProject />
+      <Techs />
+      <AboutMe />
+      <Footer />
     </>
   );
 }
