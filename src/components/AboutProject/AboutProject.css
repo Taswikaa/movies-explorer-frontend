@@ -1,0 +1,162 @@
+.about-project {
+  background-color: #202020;
+  font-family: 'inter', sans-serif;
+  color: #fff;
+  padding: 70px 18px;
+}
+
+.about-project__heading {
+  margin: 0 0 60px;
+  font-weight: 400;
+  letter-spacing: -.8px;
+  font-size: 18px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #dadada;
+}
+
+.about-project__text-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 55px;
+  margin-bottom: 60px;
+}
+
+.about-project__title {
+  font-size: 18px;
+  margin: 0 0 16px;
+  letter-spacing: -.8px;
+  line-height: 22px;
+}
+
+.about-project__text {
+  font-size: 11px;
+  line-height: 16px;
+  max-width: 284px;
+  margin: 0;
+}
+
+.about-project__decor-container {
+  display: flex;
+}
+
+.about-project__decor-item_size_grow {
+  flex-grow: 1;
+}
+
+.about-project__decor-item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.about-project__decor-weeks {
+  background-color: #303030;
+  text-align: center;
+  font-size: 11px;
+  padding: 11px 0;
+}
+
+.about-project__decor-weeks_bg_green {
+  box-sizing: border-box;
+  background-color: #3DDC84;
+  color: #000;
+  padding: 11px;
+  min-width: 31.25vw;
+}
+
+.about-project__decor-text {
+  color: #A0A0A0;
+  font-size: 11px;
+  text-align: center;
+}
+
+@media screen and (min-width: 425px) {
+  .about-project__heading {
+    font-size: 22px;
+  }
+
+  .about-project__title {
+    font-size: 20px;
+  }
+
+  .about-project__text {
+    font-size: 12px;
+  }
+
+  .about-project__decor-text {
+    font-size: 14px;
+  }
+
+  .about-project__decor-weeks {
+    font-size: 14px;
+    min-width: 140px;
+    padding: 9px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__heading {
+    margin-bottom: 70px;
+    padding-bottom: 23px;
+  }
+
+  .about-project__text-container {
+    flex-direction: row;
+    column-gap: 40px;
+    margin-bottom: 100px;
+  }
+
+  .about-project__title {
+    margin: 0 0 22px;
+  }
+
+  .about-project__text {
+    max-width: 355px;
+    line-height: 18px;
+  }
+
+  .about-project__decor-item {
+    row-gap: 14px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project {
+    padding: 112px 70px 110px;
+  }
+
+  .about-project__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .about-project__title {
+    margin: 0 0 28px;
+  }
+
+  .about-project__text {
+    max-width: 550px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .about-project__text-container {
+    margin-bottom: 110px;
+  }
+
+  .about-project__decor-item {
+    row-gap: 15px;
+  }
+
+  .about-project__decor-weeks {
+    padding: 10px;
+  }
+
+  .about-project__decor-weeks_bg_green {
+    min-width: 17.8vw;
+  }
+}

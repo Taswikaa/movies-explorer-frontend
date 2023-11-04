@@ -1,0 +1,136 @@
+.techs {
+  background-color: #202020;
+  font-family: 'inter';
+  color: #fff;
+  padding: 75px 18px 70px;
+}
+
+.techs__heading {
+  margin: 0 0 60px;
+  font-weight: 400;
+  letter-spacing: -.8px;
+  font-size: 18px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #000;
+}
+
+.techs__title {
+  margin: 0 0 25px;
+  font-size: 30px;
+  letter-spacing: -.8px;
+  text-align: center;
+  letter-spacing: -.8px;
+}
+
+.techs__text {
+  font-size: 11px;
+  line-height: 16px;
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: -.4px;
+}
+
+.techs__container {
+  max-width: 178px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.techs__item {
+  box-sizing: border-box;
+  min-width: 84px;
+  background-color: #303030;
+  border: 1px solid #303030;
+  border-radius: 10px;
+  text-align: center;
+  padding: 21px 0;
+  font-size: 12px;
+  letter-spacing: -.4px;
+}
+
+@media screen and (min-width: 425px) {
+  .techs__heading {
+    font-size: 22px;
+    border-color: #fff;
+  }
+
+  .techs__title {
+    font-size: 40px;
+  }
+
+  .techs__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .techs__container {
+    max-width: 272px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .techs {
+    padding: 90px 50px;
+    background-color: #272727;
+  }
+
+  .techs__heading {
+    margin-bottom: 80px;
+  }
+
+  .techs__title {
+    font-size: 50px;
+    line-height: 58px;
+    margin-bottom: 22px;
+    letter-spacing: -1.7px;
+  }
+
+  .techs__text {
+    max-width: 460px;
+    margin: 0 auto;
+    margin-bottom: 83px;
+  }
+
+  .techs__container {
+    max-width: 648px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .techs {
+    padding: 102px 70px 100px;
+  }
+
+  .techs__inner-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .techs__heading {
+    padding-bottom: 23px;
+    margin-bottom: 90px;
+  }
+
+  .techs__title {
+    margin-bottom: 26px;
+  }
+
+  .techs__text {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -.6px;
+    margin-bottom: 100px;
+  }
+
+  .techs__container {
+    max-width: 690px;
+  }
+
+  .techs__item {
+    min-width: 90px;
+    font-size: 14px;
+  }
+}
